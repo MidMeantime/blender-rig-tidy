@@ -1,0 +1,17 @@
+schema_version = "1.0.0"
+
+id = "rig_tidy"
+version = "0.8.1"
+name = "Rig Tidy"
+tagline = "Clean up imported game rigs: bone directions, names, chains and collections"
+maintainer = "EJ"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+[permissions]
+files = "Reads the name dictionary and saves an optional backup copy of the .blend"

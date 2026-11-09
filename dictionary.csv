@@ -1,0 +1,68 @@
+# Rig Tidy name dictionary
+# One entry per line:  word,english
+#  - "word" is matched against the pieces of a bone name split on _ . - and camelCase
+#    (so Bone_Leg_yueshu_L -> pieces Bone / Leg / yueshu / L), case-insensitive.
+#  - "english" replaces it; spaces become underscores.
+#  - Lines starting with # are ignored. Later lines (and your Extra Dictionary file) win.
+word,english
+
+# --- face (pinyin seen on this game's rigs)
+shetou,tongue
+shangya,teeth_upper
+xiaya,teeth_lower
+xiaba,chin
+bizi,nose
+bichungou,nasolabial
+yanjing,eye
+yanqiu,eyeball
+yanpi,eyelid
+meimao,brow
+zuichun,lip
+zuijiao,mouth_corner
+lianjia,cheek
+erduo,ear
+
+# --- rigging terms
+xiuxing,corrective
+yueshu,constraint
+xigai,knee
+shouzhou,elbow
+jianbang,shoulder
+bozi,neck
+
+# --- hair
+toufa,hair
+liuhai,bangs
+mawei,ponytail
+bianzi,braid
+
+# --- clothing & accessories
+qunzi,skirt
+qunbai,skirt_hem
+xiuzi,sleeve
+pifeng,cape
+doupeng,cloak
+piaodai,ribbon
+sidai,ribbon
+lingdai,tie
+yaodai,belt
+maozi,hat
+toukui,helmet
+kuijia,armor
+hujia,armor
+shoutao,glove
+xiezi,shoe
+wazi,sock
+xianglian,necklace
+erhuan,earring
+lingdang,bell
+
+# --- body extras
+weiba,tail
+chibang,wing
+xiong,chest
+yao,waist
+
+# --- props
+wuqi,weapon
+dunpai,shield

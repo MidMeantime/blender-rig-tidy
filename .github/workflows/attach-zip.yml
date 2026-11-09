@@ -1,0 +1,40 @@
+name: Attach Addon Zip
+
+# packages RigTidy.zip on version tags and renames the prior release's asset
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rename previous release zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # grab the latest release tag that isn't the current tag
+          prev_tag=$(gh release list --limit 5 --json tagName -q '.[] | select(.tagName != "${{ github.ref_name }}") | .tagName' | head -n 1)
+          if [ -n "$prev_tag" ]; then
+            if gh release download "$prev_tag" -p "RigTidy.zip"; then
+              mv "RigTidy.zip" "RigTidy-${prev_tag}.zip"
+              gh release upload "$prev_tag" "RigTidy-${prev_tag}.zip" --clobber
+              gh release delete-asset "$prev_tag" "RigTidy.zip" -y
+            fi
+          fi
+
+      - name: Zip addon
+        # keep internal folder as RigTidy/ so blender module imports don't break
+        run: git archive --format=zip --prefix=RigTidy/ -o RigTidy.zip HEAD
+
+      - name: Attach to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: RigTidy.zip
